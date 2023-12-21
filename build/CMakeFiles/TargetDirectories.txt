@@ -1,0 +1,4 @@
+/Users/rolando/cs/games/flappy/build/CMakeFiles/flappy.dir
+/Users/rolando/cs/games/flappy/build/CMakeFiles/run.dir
+/Users/rolando/cs/games/flappy/build/CMakeFiles/edit_cache.dir
+/Users/rolando/cs/games/flappy/build/CMakeFiles/rebuild_cache.dir
