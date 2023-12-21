@@ -6,7 +6,7 @@ using std::vector;
 
 namespace consts
 {
-  const int screenWidth = 1100;
+  const int screenWidth = 800;
   const int screenHeight = 700;
 
   const Image flappy = LoadImage("./img/flappy.png");
