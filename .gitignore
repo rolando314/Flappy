@@ -1,3 +1,2 @@
-_build
-_include
-_lib
+include
+lib

@@ -1,7 +1,0 @@
-class Runner {
-
-  int score;
-
-  
-
-};
