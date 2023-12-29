@@ -9,6 +9,7 @@ public:
   int score;
   bool gameOver;
   void handleInput();
+  void reset();
   void draw();
 
 private:
