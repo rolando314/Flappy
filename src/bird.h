@@ -9,6 +9,7 @@ public:
   void jump();
   void fall();
   void draw();
+  int getX(){return x;}
   int getY(){return y;}
   Texture2D getTexture(){return flappy_img;}
 

@@ -12,6 +12,7 @@ public:
   Rectangle lower;
   void draw();
   bool checkPipeCollision(Bird flappy);
+  int getX(){return x;}
 
 private:
   float x;

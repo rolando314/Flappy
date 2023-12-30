@@ -28,6 +28,9 @@ void Game::draw()
   // Checking floor and pipe collision
   checkCollisions();
 
+  // Checking if flappy passes a pipe
+  checkPassedPipe();
+
   // Game-over message
   gameOverScreen();
 }
@@ -71,7 +74,6 @@ void Game::checkCollisions()
     gameOver = true;
     gameInAction = false;
   }
-
 }
 
 void Game::gameOverScreen()
@@ -87,3 +89,20 @@ void Game::gameOverScreen()
   }
 }
 
+void Game::checkPassedPipe()
+{
+  if (!gameOver && gameInAction)
+  {
+    if (flappy.getX() > (pipes->getX() + 50))
+    {
+      score += 1;
+      if (flappy.getX() > pipes->getX() + 400)
+      {
+        score -= 350;
+        delete pipes;
+        pipes = nextPipes;
+        nextPipes = new Pipes(800);
+      }
+    }
+  }
+}
