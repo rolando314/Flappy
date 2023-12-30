@@ -1,6 +1,8 @@
 #pragma once
 #include "raylib.h"
 #include "bird.h"
+#include "pipes.h"
+#include <string>
 
 class Game
 {
@@ -10,10 +12,15 @@ public:
   bool gameOver;
   void handleInput();
   void reset();
+  void drawTitle();
+  void checkCollisions();
+  void gameOverScreen();
   void draw();
 
 private:
   Bird flappy;
+  Pipes* pipes = new Pipes(800);
+  Pipes* nextPipes = new Pipes(1200);
   bool gameInAction;
   Font font = LoadFontEx("src/fonts/press_start.ttf", 64, 0, 0);
   void restart();
