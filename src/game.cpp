@@ -6,6 +6,7 @@ Game::Game()
   score = 0;
   gameOver = false;
   gameInAction = false;
+  shouldIncScore = true;
 }
 
 void Game::draw()
@@ -19,11 +20,16 @@ void Game::draw()
 
   // Gravity effect
   if (gameInAction)
+  {
     flappy.fall();
+    displayScore();
+  }
 
   // Title message
   else
+  {
     drawTitle();
+  }
 
   // Checking floor and pipe collision
   checkCollisions();
@@ -40,12 +46,12 @@ void Game::handleInput()
   int keyPressed = GetKeyPressed();
 
   if (gameOver && keyPressed == KEY_ENTER)
-  { // come back to this
+  {
     gameOver = false;
     reset();
   }
 
-  if (keyPressed == KEY_SPACE && !gameOver)
+  if ((keyPressed == KEY_SPACE || IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) && !gameOver)
   {
     flappy.jump();
     if (!gameInAction)
@@ -95,14 +101,22 @@ void Game::checkPassedPipe()
   {
     if (flappy.getX() > (pipes->getX() + 50))
     {
-      score += 1;
+      if (shouldIncScore) score += 1;
+      shouldIncScore = false;
       if (flappy.getX() > pipes->getX() + 400)
       {
-        score -= 350;
+        shouldIncScore = true;
         delete pipes;
         pipes = nextPipes;
         nextPipes = new Pipes(800);
       }
     }
   }
+}
+
+void Game::displayScore()
+{
+  std::string temp = "SCORE: " + std::to_string(score);
+  const char *score = temp.data();
+  DrawTextEx(font, score, {10, 10}, 24, 2, BLACK);
 }

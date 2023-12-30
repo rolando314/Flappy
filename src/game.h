@@ -22,7 +22,9 @@ private:
   void restart();
   void reset();
   void drawTitle();
+  void displayScore();
   void checkCollisions();
   void gameOverScreen();
   void checkPassedPipe();
+  bool shouldIncScore;
 };
