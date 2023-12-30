@@ -10,6 +10,7 @@ public:
   void fall();
   void draw();
   int getY(){return y;}
+  Texture2D getTexture(){return flappy_img;}
 
 private:
   int x = 350;

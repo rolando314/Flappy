@@ -11,8 +11,11 @@ Game::Game()
 void Game::draw()
 {
   flappy.draw();
-  pipes->draw();
-  nextPipes->draw();
+  if (gameInAction)
+  {
+    pipes->draw();
+    nextPipes->draw();
+  }
 
   // Gravity effect
   if (gameInAction)
@@ -62,14 +65,12 @@ void Game::drawTitle()
 
 void Game::checkCollisions()
 {
-  // Floor collision
-  if (flappy.getY() > GetScreenHeight() - 100)
+  // Floor collision & pipe collision
+  if ((flappy.getY() > GetScreenHeight() - 100) || pipes->checkPipeCollision(flappy))
   {
     gameOver = true;
     gameInAction = false;
   }
-
-  // Pipe collision
 
 }
 
@@ -85,3 +86,4 @@ void Game::gameOverScreen()
     DrawTextEx(font, "PRESS ENTER TO PLAY AGAIN", {40, float(GetScreenHeight() / 2 + 20)}, 24, 2, BLACK);
   }
 }
+

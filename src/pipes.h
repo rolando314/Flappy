@@ -1,5 +1,6 @@
 #pragma once
 #include "raylib.h"
+#include "bird.h"
 #include <random>
 
 class Pipes
@@ -10,6 +11,7 @@ public:
   Rectangle upper;
   Rectangle lower;
   void draw();
+  bool checkPipeCollision(Bird flappy);
 
 private:
   float x;
