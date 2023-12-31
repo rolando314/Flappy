@@ -3,7 +3,7 @@
 Pipes::Pipes(int x)
 {
   this->x = x;
-  upper_height = (float)GetRandomValue(40, 200);
+  upper_height = (float)GetRandomValue(20, 250);
   lower_height = GetScreenHeight() - upper_height - 50;
   pipeSpeed = 1;
 }

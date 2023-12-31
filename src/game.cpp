@@ -91,7 +91,7 @@ void Game::gameOverScreen()
     const char *lossMessage = temp.data();
 
     DrawTextEx(font, lossMessage, {80, float(GetScreenHeight() / 2) - 50}, 40, 2, BLACK);
-    DrawTextEx(font, "PRESS ENTER TO PLAY AGAIN", {40, float(GetScreenHeight() / 2 + 20)}, 24, 2, BLACK);
+    DrawTextEx(font, "PRESS ENTER TO PLAY AGAIN", {25, float(GetScreenHeight() / 2 + 20)}, 24, 2, BLACK);
   }
 }
 
@@ -101,7 +101,13 @@ void Game::checkPassedPipe()
   {
     if (flappy.getX() > (pipes->getX() + 50))
     {
-      if (shouldIncScore) score += 1;
+      if (shouldIncScore)
+      {
+        score += 1;
+        pipes->incPipeSpeed();
+        nextPipes->incPipeSpeed();
+      }
+
       shouldIncScore = false;
       if (flappy.getX() > pipes->getX() + 400)
       {
@@ -109,6 +115,7 @@ void Game::checkPassedPipe()
         delete pipes;
         pipes = nextPipes;
         nextPipes = new Pipes(800);
+        nextPipes->incPipeSpeed();
       }
     }
   }
